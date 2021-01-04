@@ -1,0 +1,23 @@
+{
+  "name": "@adaptcharm/db",
+  "description": "Creates & maintains a MongoDB connection.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Jamie Isaksen",
+    "email": "jamie@jamie.no"
+  },
+  "license": "UNLICENSED",
+  "main": "db.js",
+  "engines": {
+    "node": ">=8"
+  },
+  "repository": {
+      "url": "git@github.com:AdaptCharm/db.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "dependencies": {
+    "mongoose": "^5.5.12"
+  }
+}
