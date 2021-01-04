@@ -1,7 +1,7 @@
 {
   "name": "@adaptcharm/db",
   "description": "Creates & maintains a MongoDB connection.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Jamie Isaksen",
     "email": "jamie@jamie.no"
