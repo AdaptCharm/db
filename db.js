@@ -46,7 +46,7 @@ function DB(srv = process.env.MONGO_URI, schemas, options) {
   if(!(this instanceof DB)) { return new DB(srv || process.env.MONGO_URI, schemas, options) }
 
   //Connect to MongoDB.
-  var conn = mongo.createConnection(srv, {useNewUrlParser: true}, function(err) {
+  var conn = mongo.createConnection(srv, {useNewUrlParser: true, useUnifiedTopology: true}, function(err) {
     if(err) {
       console.error(err)
       if(typeof capture !== "undefined") { capture(err) }
@@ -85,7 +85,10 @@ function getFields(schema, skip) {
     var val = schema[key], type = String(val.constructor && val.constructor.name).toLowerCase()
 
     if(type == "array") {
-      val = val[0], type = String(val.constructor && val.constructor.name).toLowerCase()
+      var sub = getFields(val[0], true)
+      
+      for(var i in sub) { result.push(key + "." + sub[i]) }
+      continue
     }
     if(type == "object") {
       if(val.type) { val = val.type, type = String(val.constructor && val.constructor.name).toLowerCase() }
